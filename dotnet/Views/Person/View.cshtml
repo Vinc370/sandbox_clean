@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<script>
+    function getSpecific(id)
+    {
+        fetch("https://localhost:7026/api/personquery/viewAPI/" + id)
+            .then(response => response.json())
+            .then(render => view(render))
+            .catch(error => console.error('Error!', error));
+    }
+
+    function view(entry)
+    {
+        var dob = new Date(entry.dob);
+        var noTime = new Date(dob.toDateString());
+
+        let index = " ";
+        index += "<h5>Welcome, " + entry.name + " (User#" + entry.id + ")</h5>";
+        index += "<p>Your date of birth is " + noTime + "</p>";
+        index += "<div style='padding-top:2.5%; margin: auto; width: 60%;'>";
+        index += "<button type='button' onclick='location.href=`https://localhost:7026/api/personquery/viewAPI/` + `" + entry.id + "`' class='btn btn-primary btn-sm' style='width:100%'>View raw data</button>";
+        index += "</div>";
+        document.getElementById("viewjs").innerHTML = index;
+    }
+
+    var url = location.pathname;
+    var id = url.substring(url.lastIndexOf('/') + 1);
+    
+    getSpecific(id);
+</script>
+
+<div style="padding-top:5.5%; margin: auto; width: 30%;">
+    <div class="col-lg-6 mb-4 mb-lg-0" style="width:50%; margin: auto; padding-bottom:5%;">
+        <img src="https://freesvg.org/img/abstract-user-flat-4.png" style="object-fit: cover; width:100%; aspect-ratio: 1; border-radius: 50%;">
+    </div>
+    <div id="viewjs" style="padding-bottom:8%; text-align: center;">
+        <!-- User data is rendered here -->
+    </div>
+</div>

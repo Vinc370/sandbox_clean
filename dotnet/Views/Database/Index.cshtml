@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Database>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div style="padding-top:5.5%">
+    <div style="padding-bottom:1%">
+        <h1>User Database</h1>
+    </div>
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th hidden>ID</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+    @foreach(var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td hidden>@item?.Id</td>
+                <td>@item?.Email</td>
+                <td>@item?.Password</td>
+                @if (@item?.DataID != null)
+                {
+                    <td>@item.Data?.Name</td>
+                }
+                else
+                {
+                    <td>null</td>
+                }
+                <td style="width:10%">
+                    <div style="width:100%">
+                      <button type="button" onclick="location.href='@Url.Action("view", "database", new {id=@item.Id })'" class="btn btn-primary btn-sm" style="width:100%">View</button>
+                    </div>
+                </td>
+                <td style="width:10%">
+                    <div style="width:100%">
+                      <button type="button" onclick="location.href='@Url.Action("update", "database", new {id=@item.Id })'" class="btn btn-info btn-sm" style="width:100%">Edit</button>
+                    </div>
+                </td>
+                <td style="width:10%">
+                    <div style="width:100%">
+                      <form method="post" asp-action="Delete" asp-route-Id="@item.Id">
+                          <input asp-for="@item.Id" class="form-control" value="@item?.Id" hidden/>
+                          <button type="submit" class="btn btn-danger btn-sm" style="width:100%">Delete</button>
+                      </form>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    }
+    </table>
+</div>
+<div style="margin:auto; width:100%; padding-top:2%">
+    <div style="margin:auto; width: 15%">
+        <button type="button" onclick="location.href='@Url.Action("create","database")'" class="btn btn-success btn-sm" style="width:100%; margin: auto">Create</button>
+    </div>
+</div>
