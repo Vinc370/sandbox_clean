@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[0.102.1, )"
             },
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[30.0.1, )"
+            },
             "Dapper": {
               "target": "Package",
               "version": "[2.1.15, )"

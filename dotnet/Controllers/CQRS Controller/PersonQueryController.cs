@@ -4,6 +4,8 @@ using dotnet.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using OfficeOpenXml;
+using CsvHelper;
+using System.Globalization;
 
 namespace dotnet.Controllers
 {
@@ -112,6 +114,16 @@ namespace dotnet.Controllers
                 };
                 index.Add(importResult);
             }
+            return Ok(index);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ReadCSV(IFormFile file)
+        {
+            var streamReader = new StreamReader(file.OpenReadStream());
+            var csvReader = new CsvReader(streamReader, CultureInfo.InvariantCulture);
+
+            var index = csvReader.GetRecords<Person>();
             return Ok(index);
         }
     }

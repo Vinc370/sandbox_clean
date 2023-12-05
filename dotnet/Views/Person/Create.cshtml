@@ -25,6 +25,24 @@
     }
 </script>
 
+<script>
+    function importCSV()
+    {
+        var formData = new FormData();
+
+        formData.append("file", importForm.files[0]);
+
+        $.ajax({
+            type: "POST",
+            url: "https://localhost:7026/api/personquery/readCSV",
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: "json"
+        })
+    }
+</script>
+
 <div style="padding-top:5.5%; margin: auto; width: 30%;">
     <div class="col-lg-6 mb-4 mb-lg-0" style="width:50%; margin: auto; padding-bottom:5%;">
         <img src="https://freesvg.org/img/abstract-user-flat-4.png" style="object-fit: cover; width:100%; aspect-ratio: 1; border-radius: 50%;">
@@ -40,7 +58,9 @@
         <label>Date of Birth</label><br />
         <input id="dob" type="date" class="form-control" placeholder="Enter date of birth">
     </div>
-    <div style="padding-top:5%">
-        <button type="button" class="btn btn-primary" onclick="create()">Submit</button>
+    <input id="importForm" type="file" name="importForm" style="width:58.675%"/>
+    <button type="button" class="btn btn-info btn-sm" style="width:40%;" onclick="importCSV()">Import CSV</button>
+    <div style="margin:auto; width:100%; padding-top:5%">
+        <button type="button" class="btn btn-primary btn-sm" style="width:100%; margin: auto" onclick="create()">Submit</button>
     </div>
 </div>

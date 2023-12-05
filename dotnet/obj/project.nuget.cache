@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "LYjvP308CQmBN5rg9FiJzZcZedBrL4VmBeSpfWDBf7spnbbxQHNRWS/l0b/XhutVmfCGAisM5PXAeWnhFIvbAA==",
+  "dgSpecHash": "1aRD7s52Ed6z0EfED0exf16echo+8My43RQBWQIYYy6bp2+axkePc3jy6znZ7nuTu7BMGOmEhzGvs2VUz4oi9w==",
   "success": true,
   "projectFilePath": "D:\\Assignment\\Bootcamp\\dotnet\\dotnet\\dotnet\\dotnet.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\ASUS\\.nuget\\packages\\bootstrap\\5.3.2\\bootstrap.5.3.2.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\closedxml\\0.102.1\\closedxml.0.102.1.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\dapper\\2.1.15\\dapper.2.1.15.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\documentformat.openxml\\2.16.0\\documentformat.openxml.2.16.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\epplus\\7.0.2\\epplus.7.0.2.nupkg.sha512",
