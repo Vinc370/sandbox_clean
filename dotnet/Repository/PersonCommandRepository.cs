@@ -17,7 +17,7 @@ namespace dotnet.Repository
         public async Task Create(Person model)
         {
             var parameter = new DynamicParameters();
-            parameter.Add("Id", model.Id);
+            parameter.Add("Id", model.id);
             parameter.Add("Name", model.name);
             parameter.Add("Dob", model.dob);
 
@@ -41,7 +41,7 @@ namespace dotnet.Repository
         public async Task Update(Person model)
         {
             var parameter = new DynamicParameters();
-            parameter.Add("Id", model.Id);
+            parameter.Add("Id", model.id);
             parameter.Add("Name", model.name);
             parameter.Add("Dob", model.dob);
 

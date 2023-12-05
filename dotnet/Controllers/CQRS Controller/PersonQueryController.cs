@@ -78,7 +78,7 @@ namespace dotnet.Controllers
 
             foreach (Person person in index)
             {
-                table.Rows.Add(person.Id, person.name, person.dob);
+                table.Rows.Add(person.id, person.name, person.dob);
             }
 
             using XLWorkbook excel = new XLWorkbook();
@@ -108,7 +108,7 @@ namespace dotnet.Controllers
             {
                 var importResult = new Person
                 {
-                    Id = Convert.ToInt32(worksheet.Cells[row, 1].Value),
+                    id = Convert.ToInt32(worksheet.Cells[row, 1].Value),
                     name = Convert.ToString(worksheet.Cells[row, 2].Value),
                     dob = Convert.ToDateTime(worksheet.Cells[row, 3].Value),
                 };

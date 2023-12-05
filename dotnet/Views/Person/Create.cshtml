@@ -21,24 +21,43 @@
         })
             .then(response => response.json())
             .then(setTimeout(function() { location.href = 'https://localhost:7026/person/index'; }, 1500))
-        .catch(error => console.error('Error!', error));
+            .catch(error => console.error('Error!', error));
     }
 </script>
 
 <script>
     function importCSV()
     {
+        var insertCSVBody;
         var formData = new FormData();
 
+        //memanggil id disebut selector
         formData.append("file", importForm.files[0]);
 
-        $.ajax({
+        var test = $.ajax({
             type: "POST",
             url: "https://localhost:7026/api/personquery/readCSV",
             data: formData,
             processData: false,
             contentType: false,
-            dataType: "json"
+            dataType: "json",
+            success: function(response)
+            {
+                insertCSVBody = JSON.parse(JSON.stringify(response));
+                console.log(insertCSVBody);
+
+                fetch('https://localhost:7026/api/personcommand/createapi', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(insertCSVBody).replace(/]|[[]/g, '')
+                })
+                    .then(response => response.json())
+                    .then(setTimeout(function() { location.href = 'https://localhost:7026/person/index'; }, 1500))
+                    .catch(error => console.error('Error!', error));
+            }
         })
     }
 </script>
@@ -58,9 +77,16 @@
         <label>Date of Birth</label><br />
         <input id="dob" type="date" class="form-control" placeholder="Enter date of birth">
     </div>
-    <input id="importForm" type="file" name="importForm" style="width:58.675%"/>
-    <button type="button" class="btn btn-info btn-sm" style="width:40%;" onclick="importCSV()">Import CSV</button>
     <div style="margin:auto; width:100%; padding-top:5%">
         <button type="button" class="btn btn-primary btn-sm" style="width:100%; margin: auto" onclick="create()">Submit</button>
     </div>
+    <div style="margin:auto; width:100%; text-align:center">
+        <br />
+        <h5>Or create using CSV?</h5>
+        <br />
+        <input id="importForm" type="file" name="importForm" style="width:58.675%"/>
+        <button type="button" class="btn btn-info btn-sm" style="width:40%;" onclick="importCSV()">Import CSV</button>
+        <br />
+    </div>
+    <br />
 </div>
